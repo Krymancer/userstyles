@@ -1,25 +1,21 @@
 /* ==UserStyle==
 @name Duolingo Catppuccin
-@namespace github.com/catppuccin/userstyles/styles/duolingo
-@homepageURL https://github.com/catppuccin/userstyles/tree/main/styles/duolingo
+@namespace github.com/catppuccin/userstyles/styles/duolingo 
+@homepageURL https://github.com/catppuccin/userstyles/tree/main/styles/duolingo 
 @version 0.0.1
-@updateURL https://github.com/catppuccin/userstyles/raw/main/styles/duolingo/catppuccin.user.css
-@supportURL https://github.com/catppuccin/userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Aduolingo
-@description Soothing pastel theme for Duolingo
+@updateURL https://github.com/catppuccin/userstyles/raw/main/styles/duolingo /catppuccin.user.css
+@supportURL https://github.com/catppuccin/userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Aexample.org
+@description Soothing pastel theme for duolingo
 @author Catppuccin
 @license MIT
 
 @preprocessor less
 @var select lightFlavor "Light Flavor" ["latte:Latte*", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha"]
 @var select darkFlavor "Dark Flavor" ["latte:Latte", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha*"]
-@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire*", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
 ==/UserStyle== */
 
-@-moz-document domain('duolingo.com') {
-  /* This section applies the light/dark themes automatically based on the user's system theme.
-     Use the below example CSS to start if the website you are theming doesn't have a light/dark mode toggle.
-     For an actual example of this, see https://github.com/catppuccin/userstyles/blob/39288b593278e5efa48007d5fc001292cf910672/styles/brave-search/catppuccin.user.css#L16-L29.
-  */
+@-moz-document domain('www.duolingo.com') {
   @media (prefers-color-scheme: light) {
     :root {
       #catppuccin(@lightFlavor, @accentColor);
@@ -29,21 +25,6 @@
     :root {
       #catppuccin(@darkFlavor, @accentColor);
     }
-  }
-
-  /* If the website you are theming *does* have a light/dark mode toggle,
-     you can conditionally enable light/dark flavors by targeting whatever
-     attribute that website uses to indicate the theme. *The example below gives you an idea of what
-     to look for. The website you are theming may use a class-based approach (e.g. :root.theme-dark),
-     or any of the myriad of other methods like this.*
-     Use the below example CSS to start if this is the case.
-     For an actual example of this, see https://github.com/catppuccin/userstyles/blob/39288b593278e5efa48007d5fc001292cf910672/styles/youtube/catppuccin.user.css#L21-L30.
-  */
-  :root[data-theme="dark"] {
-    #catppuccin(@darkFlavor, @accentColor);
-  }
-  :root[data-theme="light"] {
-    #catppuccin(@lightFlavor, @accentColor);
   }
 
   #catppuccin(@lookup, @accent) {
@@ -75,38 +56,10 @@
     @crust: @catppuccin[@@lookup][@crust];
     @accent-color: @catppuccin[@@lookup][@@accent];
 
-    --rosewater: @catppuccin[@@lookup][@rosewater];
-    --flamingo: @catppuccin[@@lookup][@flamingo];
-    --pink: @catppuccin[@@lookup][@pink];
-    --mauve: @catppuccin[@@lookup][@mauve];
-    --red: @catppuccin[@@lookup][@red];
-    --maroon: @catppuccin[@@lookup][@maroon];
-    --peach: @catppuccin[@@lookup][@peach];
-    --yellow: @catppuccin[@@lookup][@yellow];
-    --green: @catppuccin[@@lookup][@green];
-    --teal: @catppuccin[@@lookup][@teal];
-    --sky: @catppuccin[@@lookup][@sky];
-    --sapphire: @catppuccin[@@lookup][@sapphire];
-    --blue: @catppuccin[@@lookup][@blue];
-    --lavender: @catppuccin[@@lookup][@lavender];
-    --text: @catppuccin[@@lookup][@text];
-    --subtext1: @catppuccin[@@lookup][@subtext1];
-    --subtext0: @catppuccin[@@lookup][@subtext0];
-    --overlay2: @catppuccin[@@lookup][@overlay2];
-    --overlay1: @catppuccin[@@lookup][@overlay1];
-    --overlay0: @catppuccin[@@lookup][@overlay0];
-    --surface2: @catppuccin[@@lookup][@surface2];
-    --surface1: @catppuccin[@@lookup][@surface1];
-    --surface0: @catppuccin[@@lookup][@surface0];
-    --base: @catppuccin[@@lookup][@base];
-    --mantle: @catppuccin[@@lookup][@mantle];
-    --crust: @catppuccin[@@lookup][@crust];
-    --accent-color: @catppuccin[@@lookup][@@accent];
-
     color-scheme: if(@lookup = latte, light, dark);
 
     ::selection {
-      background-color: fade(rbg(--var(--accent-color)), 30%);
+      background-color: @accent-color
     }
 
     input,
@@ -116,23 +69,266 @@
       }
     }
 
-    /* Start styling your website here: */
-    background-color: @base;
+    --color-snow: @base !important;
+            --color-snow-always-light:@base !important;
+            --color-snow-always-dark: @base !important;
+            --color-polar: @surface0 !important;
+            --color-swan: @surface0 !important;
+            --color-swan-always-light: @subtext1 !important;
+            --color-swan-always-dark: @surface0 !important;
+            --color-hare: @surface0 !important;
+            --color-hare-always-light: @subtext0 !important;
+            --color-wolf: @text !important;
+            --color-eel: @text !important;
+            --color-squid: @text !important;
+            --color-walking-fish: @base !important;
+            --color-flamingo: @flamingo !important;
+            --color-pig: @pink !important;
+            --color-crab: @red !important;
+            --color-cardinal: @red !important;
+            --color-fire-ant: @red !important;
+            --color-canary: @base !important;
+            --color-duck: @yellow !important;
+            --color-bee: @yellow !important;
+            --color-bee-always-dark: @yellow !important;
+            --color-lion: @peach !important;
+            --color-fox: @peach !important;
+            --color-cheetah: @base !important;
+            --color-monkey: @peach !important;
+            --color-camel: @peach !important;
+            --color-guinea-pig: @peach !important;
+            --color-grizzly:@peach !important;
+            --color-sea-sponge: @base !important;
+            --color-turtle:@green !important;
+            --color-owl: @green !important;
+            --color-tree-frog: @green !important;
+            --color-peacock: @teal !important;
+            --color-iguana: @base !important;
+            --color-anchovy: @text !important;
+            --color-beluga: @sky !important;
+            --color-moon-jelly:@lavender !important;
+            --color-blue-jay: @blue !important;
+            --color-macaw:@blue !important;
+            --color-whale:@blue !important;
+            --color-humpback:@blue !important;
+            --color-narwhal:@blue !important;
+            --color-manta-ray: @blue !important;
+            --color-starfish: @pink !important;
+            --color-beetle: @mauve !important;
+            --color-betta: @mauve !important;
+            --color-butterfly: @mauve !important;
+            --color-dragon: @red !important;
+            --color-starling: @mauve !important;
+            --color-martin: @mauve !important;
+            --color-grackle: @mauve !important;
+            --color-honeycreeper:@mauve !important;
+            --color-deep-starling: @base !important;
+            --color-deep-martin: @base !important;
+            --color-legendary-foreground: @peach !important;
+            --color-stardust: @text !important;
+            --color-cosmos: @blue !important;
+            --color-nebula: @blue !important;
+            --color-nova: @mauve !important;
+            --color-gamma:@green !important;
+            --color-starlight: @blue !important;
+            --color-quasar: @mauve !important;
+            --color-celestia: @text !important;
+            --color-eclipse: @crust !important;
+            --color-black:@crust !important;
+            --color-aqua: @sapphire !important;
+            --color-aqua-always-light: @sapphire !important;
+            --color-ocean: @sapphire !important;
+            --color-seafoam: !important;
+            --color-ice: !important;
+            --color-max-shadow: @sapphire !important;
+            --color-black-white: @text !important;
+            --color-diamond-stat: @sapphire !important;
+            --color-mask-green: @green !important;
+            --color-pearl-stat: @pink !important;
+            --color-snow-dark-swan: !important;
+            --color-black-text: @lavender !important;
+            --color-blue-space: @blue !important;
+            --color-juicy-blue-space: @blue !important;
+            --color-juicy-blue-space-light: @blue !important;
+            --color-gold: @yellow !important;
+            --color-gray-text: @text !important;
+            --color-orange: @yellow !important;
+            --color-diamond-highlight: @text !important;
+            --color-diamond: @teal !important;
+            --color-banana: @yellow !important;
+            --color-cloud: @text !important;
+            --color-cloud-light: @text !important;
+            --color-cloud-lightest: @text !important;
+            --color-kiwi: @green !important;
+            --color-kiwi-dark:@green !important;
+            --color-kiwi-light: @green !important;
+            --color-facebook: @lavender !important;
+            --color-facebook-dark: @lavender !important;
+            --color-google: @blue !important;
+            --color-twitter: @blue !important;
+            --color-hv-light-peach: @yellow !important;
+            --color-hv-peach: @peach !important;
+            --color-hv-light-orange: @yellow !important;
+            --color-hv-orange: @peach !important;
+            --color-hv-brown: @peach !important;
+            --color-streak-panel-extended-background: @peach !important;
+            --color-streak-panel-frozen-background: @blue !important;
+            --color-streak-panel-frozen-flair-background: @blue !important;
+            --color-streak-panel-frozen-subtitle: @text !important;
+            --color-streak-panel-frozen-text: @text !important;
+            --color-streak-panel-frozen-topbar-text: @text !important;
+            --color-streak-panel-streak-society-background: @peach !important;
+            --color-streak-panel-streak-society-text: @text !important;
+            --color-streak-panel-unextended-heading-text: @overlay1 !important;
+            --color-streak-panel-unextended-heading-background: @surface2 !important;
+            --color-streak-panel-unextended-topbar-text: @text !important;
+            --color-streak-panel-milestone-gradient-start: @peach !important;
+            --color-streak-panel-milestone-gradient-end: @peach !important;
+            --color-streak-society-dark-orange: @peach !important;
+            --color-streak-society-light-orange: @peach !important;
+            --color-friends-quest-own-incomplete: !important;
+            --color-friends-quest-friend-incomplete: !important;
+            --color-black-text-always-light: !important;
+            --color-cardinal-always-light: @red !important;
+            --color-cowbird: @peach !important;
+            --color-eel-always-light: !important;
+            --color-fox-always-light: @peach !important;
+            --color-fire-ant-always-light: @red !important;
+            --color-grizzly-lite: @peach !important;
+            --color-guinea-pig-always-light: @peach !important;
+            --color-iguana-always-light: @text !important;
+            --color-macaw-always-light: @blue !important;
+            --color-owl-always-light: @green !important;
+            --color-polar-always-light: @text !important;
+            --color-sea-sponge-always-light: @green !important;
+            --color-tree-frog-always-light: @green !important;
+            --color-turtle-always-light: @green !important;
+            --color-walking-fish-always-light: @rosewater !important;
+            --color-wolf-always-light: !important;
+            --color-cardinal-always-dark: @red !important;
+            --color-eel-always-dark: @text !important;
+            --color-hare-always-dark: !important;
+            --color-macaw-always-dark: @blue !important;
+            --color-owl-always-dark:@green !important;
+            --color-polar-always-dark: @base !important;
+            --color-wolf-always-dark: @text !important;
+            --color-rookie: @green !important;
+            --color-explorer: @pink !important;
+            --color-traveler: @peach !important;
+            --color-trailblazer:@mauve !important;
+            --color-adventurer: @mauve !important;
+            --color-discoverer: @red !important;
+            --color-daredevil: @lavender !important;
+            --color-navigator:@blue !important;
+            --color-champion: @peach !important;
+            --color-daily_refresh: @blue !important;
+            --color-dark-mode-locked-path-section-text-color: @surface0 !important;
+            --color-rookie-progress-bar: @green !important;
+            --color-explorer-progress-bar: @pink !important;
+            --color-traveler-progress-bar: @peach !important;
+            --color-trailblazer-progress-bar:@mauve !important;
+            --color-adventurer-progress-bar: @mauve !important;
+            --color-discoverer-progress-bar: @red !important;
+            --color-daredevil-progress-bar: @blue !important;
+            --color-navigator-progress-bar: @blue !important;
+            --color-champion-progress-bar: @peach !important;
+            --color-daily_refresh-progress-bar:@blue !important;
+            --color-course-complete-cta: @sky !important;
+            --color-course-complete-cta-border: @sky !important;
+            --color-bea-secondary: @blue !important;
+            --color-eddy-secondary: @red !important;
+            --color-gilded-secondary: @peach !important;
+            --color-lily-secondary: @mauve !important;
+            --color-vikram-secondary: @pink !important;
+            --color-zari-secondary: @maroon !important;
+            --color-oscar-secondary:@green !important;
+            --color-falstaff-secondary: @peach !important;
+            --color-bea-radio: @blue !important;
+            --color-duo-radio: @green !important;
+            --color-eddy-radio: @red !important;
+            --color-falstaff-radio: @peach !important;
+            --color-lin-lucy-radio: @peach !important;
+            --color-lily-radio: @mauve !important;
+            --color-vikram-radio: @red !important;
+            --color-zari-radio:@maroon !important;
+            --color-oscar-radio: @green !important;
+            --color-bea-junior-shine: @blue !important;
+            --color-duo-shine: @green !important;
+            --color-eddy-shine: @red !important;
+            --color-falstaff-shine: @peach !important;
+            --color-lily-shine: @lavender !important;
+            --color-lin-lucy-shine: @peach !important;
+            --color-oscar-shine: @sky !important;
+            --color-vikram-shine: @pink !important;
+            --color-zari-shine: @pink !important;
+            --color-super-background-secondary: @base !important;
+            --color-super-gradient-background: @base !important;
+            --color-super-gradient-top-halo: @base !important;
+            --color-super-gradient-bottom-halo:@mauve !important;
+            --color-gold-shine:@yellow !important;
+            --color-legendary-dark-background: @base !important;
+            --color-roseate: @pink !important;
+            --color-rosefinch: @pink !important;
+            --color-bluebird: @blue !important;
+            --color-cotinga: @mauve !important;
+            --color-sabrewing: @mauve !important;
+            --color-blueberry: @blue !important;
+            --color-ether: @surface2 !important;
+            --color-diamond-tournament-purple: @mauve !important;
+            --color-diamond-tournament-reaction: @blue !important;
+            --color-yir-page0:@text !important;
+            --color-yir-page1: @text !important;
+            --color-yir-page1-shadow: @crust !important;
+            --color-yir-page3-shadow: @overlay0 !important;
+            --color-yir-page4-shadow: @overlay0 !important;
+            --color-yir-page5-shadow: @peach !important;
+            --color-super-gradient-green-variant1: @green !important;
+            --color-super-gradient-blue-variant1: @blue !important;
+            --color-super-gradient-pink-variant1: @pink !important;
+            --color-super-gradient-purple-variant1:@blue !important;
+            --color-unknown-001e2d: @crust !important;
+            --color-unknown-0047a4: @blue !important;
+            --color-unknown-0087d0: @blue !important;
+            --color-unknown-00aff9: @blue !important;
+            --color-unknown-013047: @base !important;
+            --color-unknown-048fd1: @blue !important;
+            --color-unknown-0e0f10: @crust !important;
+            --color-unknown-0e3d79: @blue !important;
+            --color-unknown-172071: @blue !important;
+            --color-unknown-280378: @blue !important;
+            --color-unknown-3ebbf6: @blue !important;
+            --color-unknown-655ebb: @mauve !important;
+            --color-unknown-696cee: @mauve !important;
+            --color-unknown-7c0000: @red !important;
+            --color-unknown-89e219:@green !important;
+            --color-unknown-935051: @mauve !important;
+            --color-unknown-959595: @text !important;
+            --color-unknown-a2a2a2: @text !important;
+            --color-unknown-a3dbeb: @sky !important;
+            --color-unknown-a4dffb: @sky !important;
+            --color-unknown-aaa: @text !important;
+            --color-unknown-d087ff: @mauve !important;
+            --color-unknown-d9d9d9: @text !important;
+            --color-unknown-ddd: @text !important;
+            --color-unknown-de8029: @peach !important;
+            --color-unknown-e3e3e3: @text !important;
+            --color-unknown-e4ffff: @text !important;
+            --color-unknown-ed8c01: @peach !important;
+            --color-unknown-f3484e: @red !important;
+            --color-unknown-f4fafe: @text !important;
+            --color-unknown-fbdec5: @text !important;
+            --color-unknown-ffc700: @yellow !important;
+            --color-unknown-fff2aa: @yellow !important;
+            --color-unknown-fffbef: @text !important;
 
-    /* If you need to specify an overwrite specific to a flavor
-    *  (e.g. only when the flavor is set to latte), you can use a `when` guard clause. */
-    & when (@lookup = latte) {
-      /* ... */
-    }
-    /* You can also negate the statement above by using
-    *  a `when not` guard clause. */
-    & when not (@lookup = latte) {
-      /* ... */
+    a:link,
+    a:visited {
+      color: @accent-color;
     }
   }
 }
 
-/* prettier-ignore */
+    /* prettier-ignore */
 @catppuccin: {
   @latte: { @rosewater: 220, 138, 120; @flamingo: 221, 120, 120; @pink: 234, 118, 203; @mauve: 136, 57, 239; @red: 210, 15, 57; @maroon: 230, 69, 83; @peach: 254, 100, 11; @yellow: 223, 142, 29; @green: 64, 160, 43; @teal: 23, 146, 153; @sky: 4, 165, 229; @sapphire: 32, 159, 181; @blue: 30, 102, 245; @lavender: 114, 135, 253; @text: 76, 79, 105; @subtext1: 92, 95, 119; @subtext0: 108, 111, 133; @overlay2: 124, 127, 147; @overlay1: 140, 143, 161; @overlay0: 156, 160, 176; @surface2: 172, 176, 190; @surface1: 188, 192, 204; @surface0: 204, 208, 218; @base: 239, 241, 245; @mantle: 230, 233, 239; @crust: 220, 224, 232; };
   @frappe: { @rosewater: 242, 213, 207; @flamingo: 238, 190, 190; @pink: 244, 184, 228; @mauve: 202, 158, 230; @red: 231, 130, 132; @maroon: 234, 153, 156; @peach: 239, 159, 118; @yellow: 229, 200, 144; @green: 166, 209, 137; @teal: 129, 200, 190; @sky: 153, 209, 219; @sapphire: 133, 193, 220; @blue: 140, 170, 238; @lavender: 186, 187, 241; @text: 198, 208, 245; @subtext1: 181, 191, 226; @subtext0: 165, 173, 206; @overlay2: 148, 156, 187; @overlay1: 131, 139, 167; @overlay0: 115, 121, 148; @surface2: 98, 104, 128; @surface1: 81, 87, 109; @surface0: 65, 69, 89; @base: 48, 52, 70; @mantle: 41, 44, 60; @crust: 35, 38, 52; };
